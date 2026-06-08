@@ -90,9 +90,31 @@ const HeroSection = ({ heroImage }) => {
             </p>
 
             {/* BUTTON */}
-            <Link to="/contact" className="inline-flex items-center justify-center py-[12px] px-[20px] rounded-[6px] bg-[#e1811f] text-white text-[11px] uppercase tracking-[1.5px] font-semibold mb-[48px] transition-all duration-300 hover:bg-[#d07018] hover:-translate-y-[1px]">
-              Request custom order
-            </Link>
+            <Link
+  to="/contact"
+  className="
+    hidden
+    lg:flex
+    items-center
+    justify-center
+    h-[48px]
+    w-[200px]
+    rounded-[6px]
+    bg-[#e1811f]
+    text-white
+    text-[11px]
+    uppercase
+    tracking-[1.5px]
+    font-semibold
+    transition-all
+    duration-300
+    hover:bg-[#d07018]
+    hover:-translate-y-[1px]
+  "
+>
+  Request Custom Order
+</Link>
+
 
             {/* STATS */}
             <div

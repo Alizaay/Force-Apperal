@@ -1,3 +1,6 @@
+
+
+import { Link } from "react-router-dom";
 const ProductInfo = ({ product }) => {
   return (
     <div className="w-full pt-[28px] lg:pt-[56px]">
@@ -51,9 +54,31 @@ const ProductInfo = ({ product }) => {
 
       {/* BUTTONS */}
       <div className="mt-[28px] inline-gap-row">
-        <button className="py-[12px] min-h-[46px] px-[26px] rounded-[6px] bg-[#e1811f] text-white text-[11px] uppercase tracking-[0.8px] font-semibold transition-all duration-300 hover:bg-[#d07018]">
-          Request Quote
-        </button>
+        <Link
+  to="/contact"
+  className="
+    hidden
+    lg:flex
+    items-center
+    justify-center
+    h-[48px]
+    w-[200px]
+    rounded-[6px]
+    bg-[#e1811f]
+    text-white
+    text-[11px]
+    uppercase
+    tracking-[1.5px]
+    font-semibold
+    transition-all
+    duration-300
+    hover:bg-[#d07018]
+    hover:-translate-y-[1px]
+  "
+>
+  Request Quote
+</Link>
+          
 
         <button className="py-[12px] min-h-[46px] px-[26px] rounded-[6px] border border-[#d6d0c8] text-black text-[11px] uppercase tracking-[0.8px] font-semibold transition-all duration-300 hover:bg-black hover:text-white">
           Download Catalogue
