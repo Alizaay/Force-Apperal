@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "./variables.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  background: var(--bg-primary);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/* Default vertical spacing for page sections */
+section {
+  padding-block: var(--section-vertical);
+}
+
+/* Apply a small inline gap for flex/grid containers inside sections to reduce congestion */
+section :is([class*="flex"], [class*="grid"]) {
+  gap: var(--inline-space);
+}
+
+/* Ensure consistent vertical rhythm inside sections: add gap between direct children */
+section > * + * {
+  margin-top: var(--section-element-gap);
+}
+
+/* Typographic spacing */
+h1, h2, h3, h4, h5 {
+  margin: 0 0 0.6rem 0;
+  line-height: 1.05;
+}
+
+p {
+  margin: 0 0 0.95rem 0;
+  color: var(--gray);
+}
+
+/* Buttons and small UI elements: ensure inline gaps */
+.inline-gap > * + * {
+  margin-left: var(--inline-space);
+}
+
+/* Apply consistent vertical spacing between direct children for primary layout containers */
+main > * + *,
+section > * + *,
+article > * + *,
+header > * + *,
+footer > * + *,
+.container > * + *,
+.card > * + *,
+.content > * + * {
+  margin-top: var(--section-element-gap);
+}
+
+/* Ensure flex rows use inline-gap utility where desired (avoid forcing on all .flex) */
+.inline-gap-row {
+  display: flex;
+  align-items: center;
+}
+.inline-gap-row > * + * {
+  margin-left: var(--inline-space);
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+input,
+textarea,
+select {
+  outline: none;
+  border: none;
+  font-family: inherit;
+}
