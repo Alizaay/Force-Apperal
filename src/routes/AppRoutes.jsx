@@ -1,6 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/Home";
+import CategoryPage from "../pages/category";
+import ProductDetails from "../pages/ProductDetails";
+import About from "../pages/About";
+import Portfolio from "../pages/Portfolio";
+import Blog from "../pages/Blog";
+import FAQ from "../pages/FAQ";
+import Contact from "../pages/Contact";
+
+
+
+
+
+
 
 const AppRoutes = () => {
   return (
@@ -8,22 +21,25 @@ const AppRoutes = () => {
 
       <Route path="/" element={<Home />} />
 
-      <Route path="/about" element={<div>About</div>} />
+      <Route path="/about" element={<About />} />
 
-      <Route path="/portfolio" element={<div>Portfolio</div>} />
+      <Route path="/portfolio" element={<Portfolio />} />
 
-      <Route path="/blogs" element={<div>Blogs</div>} />
+      <Route path="/blogs" element={<Blog />} />
 
-      <Route path="/faq" element={<div>FAQ</div>} />
+     <Route path="/faq" element={<FAQ />} />
 
-      <Route path="/contact" element={<div>Contact</div>} />
+<Route path="/contact" element={<Contact />} />
 
-      <Route
-        path="/category/:slug"
-        element={<div>Category Page</div>}
-      />
-
-    </Routes>
+     <Route
+  path="/category/:slug"
+  element={<CategoryPage />}
+/>
+<Route
+  path="/product/:id"
+  element={<ProductDetails />}
+/>
+</Routes>
   );
 };
 

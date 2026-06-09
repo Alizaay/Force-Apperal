@@ -5,7 +5,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex flex-col gap-0">
         {children}
       </main>
       <Footer />

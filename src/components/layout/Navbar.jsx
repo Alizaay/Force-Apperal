@@ -113,31 +113,30 @@ const Navbar = () => {
             >
               Forge Apparel
             </Link>
-
-            {/* DESKTOP BUTTON */}
-            <button
-              className="
-                hidden
-                lg:flex
-                items-center
-                justify-center
-                h-[48px]
-                w-[200px]
-                rounded-[6px]
-                bg-[#e1811f]
-                text-white
-                text-[11px]
-                uppercase
-                tracking-[1.5px]
-                font-semibold
-                transition-all
-                duration-300
-                hover:bg-[#d07018]
-                hover:-translate-y-[1px]
-              "
-            >
-              Request Custom Order
-            </button>
+            <Link
+  to="/contact"
+  className="
+    hidden
+    lg:flex
+    items-center
+    justify-center
+    h-[48px]
+    w-[200px]
+    rounded-[6px]
+    bg-[#e1811f]
+    text-white
+    text-[11px]
+    uppercase
+    tracking-[1.5px]
+    font-semibold
+    transition-all
+    duration-300
+    hover:bg-[#d07018]
+    hover:-translate-y-[1px]
+  "
+>
+  Request Custom Order
+</Link>
 
             {/* MOBILE MENU BUTTON */}
             <button
@@ -258,65 +257,46 @@ const Navbar = () => {
                           className="
                             grid
                             grid-cols-3
-                            gap-x-12
-                            gap-y-12
+                            gap-x-20
+                            md:gap-x-24
+                            gap-y-16
                           "
                         >
 
-                          {
-                            categories.map((item, index) => (
+                          {categories.map((item, index) => {
+                            const withDivider = index % 3 !== 2; // not last column
 
+                            return (
                               <Link
                                 key={index}
                                 to={item.path}
                                 className={`
                                   transition-all
                                   duration-300
+                                  pl-8
+                                  pt-4
+                                  ${withDivider ? 'md:border-r md:border-[#e7dfd6] md:pr-6' : ''}
                                   ${
                                     item.featured
-                                      ? `
-                                        bg-[#e1811f]
-                                        rounded-[8px]
-                                        px-6
-                                        py-6
-                                        text-white
-                                      `
-                                      : `
-                                        hover:text-[#e1811f]
-                                      `
+                                      ? 'bg-[#e1811f] rounded-[8px] px-6 py-6 text-white'
+                                      : 'hover:text-[#e1811f]'
                                   }
                                 `}
                               >
-
-                                <h3
-                                  className="
-                                    text-[20px]
-                                    font-bold
-                                    mb-[10px]
-                                  "
-                                >
+                                <h3 className="text-[20px] font-bold mb-[10px]">
                                   {item.title}
                                 </h3>
 
                                 <p
-                                  className={`
-                                    text-[12px]
-                                    leading-[1.9]
-                                    tracking-[1px]
-                                    ${
-                                      item.featured
-                                        ? "text-white/90"
-                                        : "text-[#666]"
-                                    }
-                                  `}
+                                  className={`text-[12px] leading-[1.9] tracking-[1px] ${
+                                    item.featured ? 'text-white/90' : 'text-[#666]'
+                                  }`}
                                 >
                                   {item.description}
                                 </p>
-
                               </Link>
-
-                            ))
-                          }
+                            );
+                          })}
 
                         </div>
 
@@ -518,6 +498,8 @@ const Navbar = () => {
                       border-b
                       border-[#f1ece5]
                       pb-4
+                      pl-6
+                      pt-3
                     "
                   >
 
@@ -551,24 +533,28 @@ const Navbar = () => {
 
             </div>
 
-            {/* MOBILE CTA */}
-            <button
-              className="
-                mt-10
-                w-full
-                h-[46px]
-                rounded-[6px]
-                bg-[#e1811f]
-                text-white
-                text-[11px]
-                uppercase
-                tracking-[1px]
-                font-semibold
-              "
-            >
-              Request Custom Order
-            </button>
+            <Link
+  to="/contact"
+  onClick={() => setMobileMenu(false)}
+  className="
+    mt-10
+    w-full
+    h-[46px]
+    rounded-[6px]
+    bg-[#e1811f]
+    text-white
+    text-[11px]
+    uppercase
+    tracking-[1px]
+    font-semibold
 
+    flex
+    items-center
+    justify-center
+  "
+>
+  Request Custom Order
+</Link>
           </div>
 
         </div>

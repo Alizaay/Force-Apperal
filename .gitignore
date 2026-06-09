@@ -26,4 +26,4 @@ dist-ssr
 *.swp
 *.swo
 *~
-client/dist
+dist

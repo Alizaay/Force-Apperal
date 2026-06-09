@@ -31,4 +31,10 @@
 
   /* Transition */
   --transition: all 0.3s ease;
+  /* Section vertical spacing (default) */
+  --section-vertical: 72px;
+  /* Inline gap used inside flex/grid containers within sections */
+  --inline-space: 16px;
+  /* Default gap between direct child elements inside a section */
+  --section-element-gap: 20px;
 }
