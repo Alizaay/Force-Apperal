@@ -7,7 +7,7 @@ import WhyChooseUs from "../../components/home/WhyChooseUs";
 import CTASection from "../../components/home/CTASection";
 
 // images
-import heroImage from "../../assets/images/heroimage.png";
+import heroImage from "../../assets/images/heroImage.png";
 // images
 
 const Home = () => {

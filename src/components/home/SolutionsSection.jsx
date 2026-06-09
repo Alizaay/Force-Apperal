@@ -3,7 +3,7 @@ import Container from "../shared/Container";
 // images
 import mainSolution from "../../assets/images/accessories.jpg";
 import workWear from "../../assets/images/workwear.jpg";
-import heroImage from "../../assets/images/heroimage.png";
+import heroImage from "../../assets/images/heroImage.png";
 import formalWear from "../../assets/images/FormalWear.jpg";
 
 const SolutionsSection = () => {
