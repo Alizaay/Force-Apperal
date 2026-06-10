@@ -2,52 +2,87 @@ import { principles } from "../../data/aboutData";
 
 const Principles = () => {
   return (
-    <section className="bg-white w-full overflow-hidden">
-      <div className="w-full flex justify-center px-6 py-[56px]">
-        <div className="w-full max-w-[900px]">
-          {/* HEADER */}
-          <div className="text-center mb-[28px]">
-            <p className="text-[#e1811f] text-[12px] uppercase tracking-[2px] mb-[9px]">
+    <section style={{ backgroundColor: "#fff", width: "100%", overflow: "hidden" }}>
+      <div style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        padding: "56px 24px",
+      }}>
+        <div style={{ width: "100%", maxWidth: "900px" }}>
+          <div style={{ textAlign: "center", marginBottom: "28px" }}>
+            <p style={{
+              color: "#e1811f",
+              fontSize: "12px",
+              textTransform: "uppercase",
+              letterSpacing: "2px",
+              marginBottom: "9px",
+              marginTop: 0,
+            }}>
               Our Service
             </p>
 
-            <h2
-              className="
-                max-w-[900px]
-                mx-auto
-                text-[30px]
-                font-black
-                uppercase
-                leading-[1.08]
-                tracking-[-0.4px]
-                text-black
-              "
-            >
+            <h2 className="principles-heading" style={{
+              maxWidth: "900px",
+              margin: "0 auto",
+              fontSize: "30px",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              lineHeight: 1.08,
+              letterSpacing: "-0.4px",
+              color: "#111",
+            }}>
               Six Principles That Shape Every Decision On The Floor.
             </h2>
           </div>
 
-          {/* GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "10px",
+            }}
+            className="principles-grid"
+          >
             {principles.map((item) => (
               <div
                 key={item.id}
-                className="
-                  bg-[#f7f7f7]
-                  min-h-[120px]
-                  px-[18px]
-                  py-[16px]
-                "
+                className="principle-card"
+                style={{
+                  backgroundColor: "#f7f7f7",
+                  minHeight: "120px",
+                  padding: "16px 18px",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                }}
               >
-                <p className="text-[14px] text-black mb-[9px] leading-none">
+                <p style={{
+                  fontSize: "14px",
+                  color: "#111",
+                  marginBottom: "9px",
+                  lineHeight: 1,
+                  marginTop: 0,
+                }}>
                   {item.id}
                 </p>
 
-                <h3 className="text-[18px] font-black uppercase text-black mb-[10px] leading-none">
+                <h3 style={{
+                  fontSize: "18px",
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  color: "#111",
+                  marginBottom: "10px",
+                  lineHeight: 1,
+                  marginTop: 0,
+                }}>
                   {item.title}
                 </h3>
 
-                <p className="text-[14px] leading-[1.45] text-[#9a9a9a]">
+                <p style={{
+                  fontSize: "14px",
+                  lineHeight: 1.45,
+                  color: "#9a9a9a",
+                  margin: 0,
+                }}>
                   {item.description}
                 </p>
               </div>
@@ -55,6 +90,26 @@ const Principles = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        .principle-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+        @media (max-width: 1024px) {
+          .principles-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .principles-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .principles-heading {
+            font-size: 24px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

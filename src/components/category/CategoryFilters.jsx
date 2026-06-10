@@ -4,14 +4,7 @@ import { FiChevronDown } from "react-icons/fi";
 const filterGroups = [
   {
     title: "Product Type",
-    options: [
-      "Polo Boys & Girls",
-      "Sports Shoes",
-      "Sports Pants",
-      "Fleece",
-      "Rugby",
-      "Jackets",
-    ],
+    options: ["Polo Boys & Girls", "Sports Shoes", "Sports Pants", "Fleece", "Rugby", "Jackets"],
   },
   {
     title: "Size",
@@ -41,109 +34,82 @@ const CategoryFilters = () => {
   });
 
   const toggleGroup = (title) => {
-    setOpenGroups((prev) => ({
-      ...prev,
-      [title]: !prev[title],
-    }));
+    setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
   };
 
   return (
-    <aside
-      className="
-        w-full
-        lg:w-[210px]
-        shrink-0
-
-        pt-[16px]
-        pl-[30px]
-        sm:pl-[38px]
-        lg:pl-[20px]
-
-        pr-[20px]
-      "
-    >
-      <h3
-        className="
-          text-[14px]
-          uppercase
-          tracking-[3px]
-          font-medium
-          text-[#444]
-          mb-[28px]
-        "
-      >
+    <aside style={{ width: "100%", maxWidth: "220px", flexShrink: 0 }} className="category-filters">
+      <h3 style={{
+        fontSize: "13px",
+        textTransform: "uppercase",
+        letterSpacing: "2.5px",
+        fontWeight: 600,
+        color: "#444",
+        marginBottom: "24px",
+        marginTop: 0,
+      }}>
         Filters
       </h3>
 
       {filterGroups.map((group) => (
         <div
           key={group.title}
-          className="
-            border-b
-            border-[#d8d2ca]
-            pt-[6px]
-            pb-[16px]
-            mb-[16px]
-          "
+          style={{
+            borderBottom: "1px solid #e0dbd4",
+            paddingBottom: "16px",
+            marginBottom: "16px",
+          }}
         >
           <button
             type="button"
             onClick={() => toggleGroup(group.title)}
-            className="
-              w-full
-              flex
-              items-center
-              justify-between
-              mb-[12px]
-            "
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "0 0 12px 0",
+            }}
           >
-            <span
-              className="
-                text-[13px]
-                uppercase
-                font-black
-                tracking-[0.4px]
-                text-black
-              "
-            >
+            <span style={{
+              fontSize: "12px",
+              textTransform: "uppercase",
+              fontWeight: 900,
+              letterSpacing: "0.5px",
+              color: "#111",
+            }}>
               {group.title}
             </span>
-
             <FiChevronDown
-              className={`
-                text-[14px]
-                transition-transform
-                duration-300
-                ${openGroups[group.title] ? "rotate-180" : "rotate-0"}
-              `}
+              style={{
+                fontSize: "14px",
+                transition: "transform 0.3s",
+                transform: openGroups[group.title] ? "rotate(180deg)" : "rotate(0deg)",
+              }}
             />
           </button>
 
           {openGroups[group.title] && (
-            <div className="space-y-[12px] pl-[2px]">
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {group.options.map((option) => (
                 <label
                   key={option}
-                  className="
-                    flex
-                    items-center
-                    gap-[12px]
-                    text-[13px]
-                    leading-none
-                    text-[#555]
-                    cursor-pointer
-                  "
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    fontSize: "13px",
+                    color: "#555",
+                    cursor: "pointer",
+                  }}
                 >
                   <input
                     type="checkbox"
-                    className="
-                      w-[15px]
-                      h-[15px]
-                      accent-[#e1811f]
-                      cursor-pointer
-                    "
+                    style={{ width: "15px", height: "15px", accentColor: "#e1811f", cursor: "pointer" }}
                   />
-
                   <span>{option}</span>
                 </label>
               ))}

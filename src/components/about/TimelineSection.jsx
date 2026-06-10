@@ -2,107 +2,105 @@ import { timeline } from "../../data/aboutData";
 
 const TimelineSection = () => {
   return (
-    <section className="bg-[#f7f7f7] w-full overflow-hidden">
-      <div className="w-full flex justify-center px-6 py-[52px]">
-        <div className="w-full max-w-[900px]">
-          {/* HEADER */}
-          <div className="text-center mb-[34px]">
-            <p className="text-[#e1811f] text-[12px] uppercase tracking-[2px] mb-[10px]">
+    <section style={{ backgroundColor: "#f7f7f7", width: "100%", overflow: "hidden" }}>
+      <div style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        padding: "52px 24px",
+      }}>
+        <div style={{ width: "100%", maxWidth: "900px" }}>
+          <div style={{ textAlign: "center", marginBottom: "34px" }}>
+            <p style={{
+              color: "#e1811f",
+              fontSize: "12px",
+              textTransform: "uppercase",
+              letterSpacing: "2px",
+              marginBottom: "10px",
+              marginTop: 0,
+            }}>
               Timeline
             </p>
 
-            <h2
-              className="
-                max-w-[900px]
-                mx-auto
-                text-[30px]
-                font-black
-                uppercase
-                leading-[1.08]
-                tracking-[-0.3px]
-                text-black
-              "
-            >
+            <h2 style={{
+              maxWidth: "900px",
+              margin: "0 auto",
+              fontSize: "30px",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              lineHeight: 1.08,
+              letterSpacing: "-0.3px",
+              color: "#111",
+            }}>
               Sixteen Years, One Obsession With Quality.
             </h2>
           </div>
 
-          {/* TIMELINE */}
-          <div className="relative">
-            {/* LINE */}
+          <div style={{ position: "relative" }}>
             <div
-              className="
-                absolute
-                top-[10px]
-                left-[8px]
-                right-[8px]
-                h-[2px]
-                bg-[#e1811f]
-              "
+              style={{
+                position: "absolute",
+                top: "10px",
+                left: "8px",
+                right: "8px",
+                height: "2px",
+                backgroundColor: "#e1811f",
+              }}
+              className="timeline-line"
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-[28px]">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(5, 1fr)",
+                gap: "28px",
+              }}
+              className="timeline-grid"
+            >
               {timeline.map((item) => (
                 <div
                   key={item.year}
-                  className="
-                    relative
-                    pt-[38px]
-                  "
+                  style={{ position: "relative", paddingTop: "38px" }}
                 >
-                  {/* DOT */}
-                  <span
-                    className="
-                      absolute
-                      top-[6px]
-                      left-[2px]
+                  <span style={{
+                    position: "absolute",
+                    top: "6px",
+                    left: "2px",
+                    width: "9px",
+                    height: "9px",
+                    borderRadius: "50%",
+                    backgroundColor: "#e1811f",
+                  }} />
 
-                      w-[9px]
-                      h-[9px]
-
-                      rounded-full
-                      bg-[#e1811f]
-                    "
-                  />
-
-                  {/* YEAR */}
-                  <h3
-                    className="
-                      text-[12px]
-                      font-black
-                      text-black
-
-                      mb-[10px]
-                      leading-none
-                    "
-                  >
+                  <h3 style={{
+                    fontSize: "12px",
+                    fontWeight: 900,
+                    color: "#111",
+                    marginBottom: "10px",
+                    lineHeight: 1,
+                    marginTop: 0,
+                  }}>
                     {item.year}
                   </h3>
 
-                  {/* TITLE */}
-                  <h4
-                    className="
-                      text-[16px]
-                      font-black
-                      text-black
-
-                      mb-[8px]
-                      leading-none
-                    "
-                  >
+                  <h4 style={{
+                    fontSize: "16px",
+                    fontWeight: 900,
+                    color: "#111",
+                    marginBottom: "8px",
+                    lineHeight: 1,
+                    marginTop: 0,
+                  }}>
                     {item.title}
                   </h4>
 
-                  {/* DESCRIPTION */}
-                  <p
-                    className="
-                      text-[14px]
-                      leading-[1.45]
-                      text-[#777]
-
-                      max-w-[120px]
-                    "
-                  >
+                  <p className="timeline-desc" style={{
+                    fontSize: "14px",
+                    lineHeight: 1.45,
+                    color: "#777",
+                    maxWidth: "120px",
+                    margin: 0,
+                  }}>
                     {item.description}
                   </p>
                 </div>
@@ -111,6 +109,25 @@ const TimelineSection = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .timeline-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .timeline-line {
+            display: none;
+          }
+        }
+        @media (max-width: 640px) {
+          .timeline-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .timeline-desc {
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

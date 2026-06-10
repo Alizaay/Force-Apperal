@@ -5,85 +5,74 @@ const ContactFAQItem = ({ item }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      className="
-        border-b
-        border-[#bdb7af]
-
-        py-[18px]
-      "
-    >
+    <div style={{
+      borderBottom: "1px solid #bdb7af",
+      padding: "18px 0",
+    }}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="
-          w-full
-
-          flex
-          items-center
-          justify-between
-
-          text-left
-        "
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          textAlign: "left",
+          background: "none",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
+          fontFamily: "inherit",
+        }}
       >
-        <span
-          className="
-            text-[13px]
-            md:text-[14px]
-
-            font-black
-            uppercase
-
-            text-black
-
-            pr-[20px]
-          "
-        >
+        <span style={{
+          fontSize: "14px",
+          fontWeight: 900,
+          textTransform: "uppercase",
+          color: "#111",
+          paddingRight: "20px",
+        }} className="contact-faq-question">
           {item.question}
         </span>
 
         <FiChevronDown
-          className={`
-            text-[15px]
-            text-black
-
-            flex-shrink-0
-
-            transition-transform
-            duration-300
-
-            ${open ? "rotate-180" : ""}
-          `}
+          style={{
+            fontSize: "15px",
+            color: "#111",
+            flexShrink: 0,
+            transition: "transform 0.3s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
         />
       </button>
 
       <div
-        className={`
-          overflow-hidden
-          transition-all
-          duration-300
-
-          ${
-            open
-              ? "max-h-[180px] pt-[12px]"
-              : "max-h-0"
-          }
-        `}
+        className={`contact-faq-answer${open ? " is-open" : ""}`}
+        style={{
+          overflow: "hidden",
+          transition: "max-height 0.3s ease, padding 0.3s ease",
+          maxHeight: open ? "500px" : "0",
+          paddingTop: open ? "12px" : "0",
+        }}
       >
-        <p
-          className="
-            text-[13px]
-
-            leading-[1.8]
-
-            text-[#666]
-
-            max-w-[1000px]
-          "
-        >
+        <p style={{
+          fontSize: "13px",
+          lineHeight: 1.8,
+          color: "#666",
+          maxWidth: "1000px",
+          margin: 0,
+        }}>
           {item.answer}
         </p>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-faq-question {
+            font-size: 13px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

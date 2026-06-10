@@ -1,62 +1,50 @@
 const FAQHero = () => {
   return (
-    <div
-      className="
-        w-full
-        max-w-[900px]
-
-        mx-auto
-
-        mb-[55px]
-      "
-    >
-      <p
-        className="
-          text-[#e1811f]
-
-          text-[12px]
-          uppercase
-
-          tracking-[3px]
-
-          font-medium
-
-          mb-[16px]
-        "
-      >
+    <div style={{
+      width: "100%",
+      maxWidth: "900px",
+      margin: "0 auto 55px",
+    }}>
+      <p style={{
+        color: "#e1811f",
+        fontSize: "12px",
+        textTransform: "uppercase",
+        letterSpacing: "3px",
+        fontWeight: 500,
+        marginBottom: "16px",
+        marginTop: 0,
+      }}>
         Frequently Asked
       </p>
 
-      <h1
-        className="
-          text-[28px]
-          md:text-[34px]
-
-          font-black
-          uppercase
-
-          leading-[1.05]
-          tracking-[-1px]
-
-          text-black
-        "
-      >
+      <h1 style={{
+        fontSize: "34px",
+        fontWeight: 900,
+        textTransform: "uppercase",
+        lineHeight: 1.05,
+        letterSpacing: "-1px",
+        color: "#111",
+        margin: 0,
+      }} className="faq-hero-title">
         Answers, Before You
         <br />
         Ask.
       </h1>
 
-      {/* Divider line like Figma */}
-      <div
-        className="
-          w-full
-          h-[1px]
+      <div style={{
+        width: "100%",
+        height: "1px",
+        backgroundColor: "#bdb7af",
+        marginTop: "28px",
+      }} />
 
-          bg-[#bdb7af]
-
-          mt-[28px]
-        "
-      />
+      <style>{`
+        @media (max-width: 768px) {
+          .faq-hero-title {
+            font-size: 28px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

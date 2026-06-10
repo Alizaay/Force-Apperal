@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 
 import MainLayout from "../../layouts/MainLayout";
-
 import ProductGallery from "../../components/product/ProductGallery";
 import ProductInfo from "../../components/product/ProductInfo";
 import ProductTabs from "../../components/product/ProductTabs";
@@ -15,53 +14,69 @@ const ProductDetails = () => {
   const product =
     productsData.find((item) => item.id === Number(id)) || productsData[0];
 
-  const relatedProducts =
-    productsData.filter((item) => item.id !== product.id).length > 0
-      ? productsData.filter((item) => item.id !== product.id)
-      : productsData;
+  const relatedProducts = productsData.filter((item) => item.id !== product.id);
 
   return (
     <MainLayout>
-      <section className="bg-[#fbf8f6] w-full overflow-hidden">
-        <div className="w-full max-w-[1400px] mx-auto px-8 sm:px-10 lg:px-16 xl:px-24 pt-[40px] pb-[80px]">
-          <div className="w-full flex justify-center">
-              <div
-                className="w-full max-w-[1050px] bg-white rounded-[16px] px-8 sm:px-10 lg:px-14 xl:px-16 py-10 shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-[#f0eae2]"
-                style={{
-                  background: 'radial-gradient(circle at 10% 20%, rgba(225,129,31,0.06), transparent 25%), radial-gradient(circle at 90% 80%, rgba(225,129,31,0.035), transparent 20%), #fbf8f6'
-                }}
-              >
-            {/* TOP PRODUCT AREA */}
+      <section className="product-page-section" style={{ backgroundColor: "#fbf8f6", width: "100%", padding: "40px 0 80px" }}>
+        <div className="product-page-outer" style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 40px" }}>
+          <div style={{
+            width: "100%",
+            maxWidth: "1050px",
+            margin: "0 auto",
+            backgroundColor: "#fff",
+            borderRadius: "16px",
+            padding: "40px 48px 48px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+            border: "1px solid #f0eae2",
+            background: "radial-gradient(circle at 10% 20%, rgba(225,129,31,0.06), transparent 25%), radial-gradient(circle at 90% 80%, rgba(225,129,31,0.04), transparent 20%), #fff",
+          }} className="product-card-wrap">
+
+            {/* Gallery + Info */}
             <div
-              className="
-                grid
-                grid-cols-1
-                lg:grid-cols-[430px_520px]
-
-                gap-[50px]
-                lg:gap-[70px]
-
-                items-start
-              "
+              style={{
+                display: "grid",
+                gridTemplateColumns: "420px 1fr",
+                gap: "60px",
+                alignItems: "start",
+              }}
+              className="product-top-grid"
             >
               <ProductGallery product={product} />
-
               <ProductInfo product={product} />
             </div>
 
-              {/* PRODUCT TABS */}
-              <div className="mt-8">
-                <ProductTabs product={product} />
-              </div>
-
-              {/* RELATED PRODUCTS */}
-              <div className="mt-12">
-                <RelatedProducts products={relatedProducts} />
-              </div>
-            </div>
+            <ProductTabs product={product} />
+            <RelatedProducts products={relatedProducts.length ? relatedProducts.slice(0, 4) : productsData.slice(0, 4)} />
           </div>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .product-top-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .product-card-wrap {
+            padding: 28px 24px 36px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .product-page-outer {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .product-page-section {
+            padding-top: 24px !important;
+            padding-bottom: 48px !important;
+          }
+          .product-card-wrap {
+            padding: 20px 16px 28px !important;
+            border-radius: 12px !important;
+          }
+        }
+      `}</style>
     </MainLayout>
   );
 };

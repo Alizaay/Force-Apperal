@@ -3,56 +3,86 @@ import { FiArrowLeft } from "react-icons/fi";
 
 const CategoryHero = ({ title, subtitle, image }) => {
   return (
-    <section className="relative w-full h-[300px] overflow-hidden bg-black">
-      {/* IMAGE */}
+    <section className="category-hero" style={{ position: "relative", width: "100%", height: "280px", overflow: "hidden", backgroundColor: "#111" }}>
       <img
         src={image}
         alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
       />
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/25" />
+      <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.3)" }} />
 
-      {/* BACK BUTTON */}
-      <Link to="/" className="absolute top-[28px] left-8 sm:left-10 lg:left-16 text-white text-[24px] hover:text-white/80 transition-all duration-300">
+      <Link
+        to="/"
+        className="category-hero-back"
+        style={{
+          position: "absolute",
+          top: "24px",
+          left: "40px",
+          color: "#fff",
+          fontSize: "22px",
+          textDecoration: "none",
+          zIndex: 10,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <FiArrowLeft />
       </Link>
 
-      {/* CENTER CONTENT */}
-      <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="text-center px-8 sm:px-10">
-          <h1
-            className="
-              text-[38px]
-              md:text-[48px]
-              lg:text-[56px]
-
-              font-black
-              uppercase
-
-              leading-none
-
-              text-white
-
-              mb-[12px]
-            "
-          >
+      <div style={{
+        position: "relative",
+        zIndex: 10,
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "0 24px",
+      }}>
+        <div>
+          <h1 className="category-hero-title" style={{
+            fontSize: "48px",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            lineHeight: 1,
+            color: "#fff",
+            marginBottom: "12px",
+            letterSpacing: "-1px",
+          }}>
             {title}
           </h1>
-
-          <p
-            className="
-              text-[12px]
-              md:text-[13px]
-
-              text-white/90
-            "
-          >
+          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.9)", margin: 0 }}>
             {subtitle}
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .category-hero {
+            height: 220px !important;
+          }
+          .category-hero-title {
+            font-size: 32px !important;
+          }
+          .category-hero-back {
+            left: 20px !important;
+            top: 18px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .category-hero {
+            height: 200px !important;
+          }
+          .category-hero-title {
+            font-size: 26px !important;
+          }
+          .category-hero-back {
+            left: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

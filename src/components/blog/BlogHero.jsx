@@ -1,64 +1,51 @@
 const BlogHero = () => {
   return (
-    <div
-      className="
-        w-full
-
-        flex
-        justify-center
-
-        mb-[40px]
-      "
-    >
-      <div
-        className="
-          w-full
-          max-w-[900px]
-
-          text-left
-        "
-      >
-        {/* LABEL */}
-        <p
-          className="
-            text-[#e1811f]
-
-            text-[12px]
-            uppercase
-
-            tracking-[2px]
-
-            font-medium
-
-            mb-[10px]
-          "
-        >
-          BLOGS
+    <div style={{
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      marginBottom: "40px",
+    }}>
+      <div style={{
+        width: "100%",
+        maxWidth: "900px",
+        textAlign: "left",
+      }}>
+        <p style={{
+          color: "#e1811f",
+          fontSize: "12px",
+          textTransform: "uppercase",
+          letterSpacing: "2px",
+          fontWeight: 500,
+          marginBottom: "10px",
+          marginTop: 0,
+        }}>
+          Blogs
         </p>
 
-        {/* TITLE */}
-        <h1
-          className="
-            max-w-[400px]
-
-            text-[30px]
-            md:text-[34px]
-
-            font-black
-            uppercase
-
-            leading-[0.92]
-
-            tracking-[-1px]
-
-            text-black
-          "
-        >
-          NOTES FROM THE
+        <h1 style={{
+          maxWidth: "400px",
+          fontSize: "34px",
+          fontWeight: 900,
+          textTransform: "uppercase",
+          lineHeight: 0.92,
+          letterSpacing: "-1px",
+          color: "#111",
+          margin: 0,
+        }} className="blog-hero-title">
+          Notes From The
           <br />
-          CUTTING FLOOR.
+          Cutting Floor.
         </h1>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .blog-hero-title {
+            font-size: 30px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

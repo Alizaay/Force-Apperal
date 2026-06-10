@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const ProductTabs = ({ product }) => {
-  // Use product.tabs if available, otherwise build from individual fields
   const tabs = product.tabs
     ? product.tabs
     : {
@@ -19,38 +18,38 @@ const ProductTabs = ({ product }) => {
                 .map(([key, value]) => `${key}: ${value}`)
                 .join("\n"),
         Customization:
-          typeof product.customization === "string"
-            ? product.customization
-            : Array.isArray(product.customization)
+          Array.isArray(product.customization)
             ? product.customization.join(", ")
-            : Object.entries(product.customization || {})
-                .map(([key, value]) => `${key}: ${value}`)
-                .join("\n"),
+            : String(product.customization || ""),
       };
 
   const tabKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabKeys[0] || "Description");
 
   return (
-    <div className="mt-[48px]">
-      {/* TAB NAVIGATION */}
-      <div className="border-b border-[#d8d2ca]">
-        <div className="flex gap-[28px] overflow-x-auto py-[12px]">
-          {Object.keys(tabs).map((tab) => (
+    <div style={{ marginTop: "48px", paddingTop: "8px", borderTop: "1px solid #eee" }}>
+      <div style={{ borderBottom: "1px solid #d8d2ca" }}>
+        <div style={{ display: "flex", gap: "32px", overflowX: "auto", padding: "8px 0" }}>
+          {tabKeys.map((tab) => (
             <button
               key={tab}
+              type="button"
               onClick={() => setActiveTab(tab)}
-              className={`
-                py-[10px] px-[6px]
-                text-[12px]
-                uppercase
-                tracking-[1.2px]
-                font-semibold
-                whitespace-nowrap
-                transition-all
-                duration-300
-                ${activeTab === tab ? "text-[#e1811f] border-b-2 border-[#e1811f]" : "text-[#666]"}
-              `}
+              style={{
+                padding: "10px 4px",
+                fontSize: "12px",
+                textTransform: "uppercase",
+                letterSpacing: "1.2px",
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+                background: "none",
+                border: "none",
+                borderBottom: activeTab === tab ? "2px solid #e1811f" : "2px solid transparent",
+                color: activeTab === tab ? "#e1811f" : "#666",
+                cursor: "pointer",
+                transition: "color 0.2s, border-color 0.2s",
+                marginBottom: "-1px",
+              }}
             >
               {tab}
             </button>
@@ -58,18 +57,14 @@ const ProductTabs = ({ product }) => {
         </div>
       </div>
 
-      {/* TAB CONTENT */}
-      <div className="pt-[24px] max-w-[950px] mx-auto">
-        <p
-          className="
-            text-[13px]
-            leading-[2]
-
-            text-[#444]
-
-            whitespace-pre-line
-          "
-        >
+      <div style={{ paddingTop: "24px", maxWidth: "900px" }}>
+        <p style={{
+          fontSize: "14px",
+          lineHeight: 1.9,
+          color: "#444",
+          margin: 0,
+          whiteSpace: "pre-line",
+        }}>
           {tabs[activeTab]}
         </p>
       </div>

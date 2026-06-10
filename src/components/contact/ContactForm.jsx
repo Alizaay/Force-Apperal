@@ -1,96 +1,150 @@
+const fieldLabel = {
+  display: "block",
+  fontSize: "12px",
+  color: "#9a9a9a",
+  marginBottom: "6px",
+};
+
+const fieldInput = {
+  width: "100%",
+  height: "42px",
+  padding: "0 12px",
+  borderRadius: "6px",
+  border: "1px solid #e5ded6",
+  backgroundColor: "#fafafa",
+  fontSize: "12px",
+  color: "#333",
+  outline: "none",
+  fontFamily: "inherit",
+};
+
 const ContactForm = () => {
   return (
     <form
-      className="
-        bg-white
-        rounded-[12px]
-
-        px-[24px]
-        py-[24px]
-      "
+      style={{
+        backgroundColor: "#fff",
+        borderRadius: "12px",
+        padding: "24px",
+        border: "1px solid #f0eae2",
+        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.04)",
+      }}
+      onSubmit={(e) => e.preventDefault()}
     >
       <div
-        className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-
-          gap-x-[14px]
-          gap-y-[14px]
-        "
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          columnGap: "14px",
+          rowGap: "14px",
+        }}
+        className="contact-form-grid"
       >
         <div>
-          <label className="block text-[12px] text-[#9a9a9a] mb-[6px]">
-            Full Name
-          </label>
+          <label style={fieldLabel}>Full Name</label>
           <input
-            className="w-full h-[42px] px-[12px] rounded-[6px] border border-[#e5ded6] bg-[#fafafa] text-[10px] outline-none"
+            className="contact-field"
+            style={fieldInput}
             placeholder="Type here"
           />
         </div>
 
         <div>
-          <label className="block text-[12px] text-[#9a9a9a] mb-[6px]">
-            Company
-          </label>
+          <label style={fieldLabel}>Company</label>
           <input
-            className="w-full h-[42px] px-[12px] rounded-[6px] border border-[#e5ded6] bg-[#fafafa] text-[10px] outline-none"
+            className="contact-field"
+            style={fieldInput}
             placeholder="Type here"
           />
         </div>
 
         <div>
-          <label className="block text-[12px] text-[#9a9a9a] mb-[6px]">
-            Email
-          </label>
+          <label style={fieldLabel}>Email</label>
           <input
             type="email"
-            className="w-full h-[42px] px-[12px] rounded-[6px] border border-[#e5ded6] bg-[#fafafa] text-[10px] outline-none"
+            className="contact-field"
+            style={fieldInput}
             placeholder="Type here"
           />
         </div>
 
         <div>
-          <label className="block text-[12px] text-[#9a9a9a] mb-[6px]">
-            Phone
-          </label>
+          <label style={fieldLabel}>Phone</label>
           <input
-            className="w-full h-[42px] px-[12px] rounded-[6px] border border-[#e5ded6] bg-[#fafafa] text-[10px] outline-none"
+            className="contact-field"
+            style={fieldInput}
             placeholder="Type here"
           />
         </div>
       </div>
 
-      <div className="mt-[14px]">
-        <label className="block text-[12px] text-[#9a9a9a] mb-[6px]">
-          Inquiry Type
-        </label>
-
-        <select className="w-full h-[42px] px-[12px] rounded-[6px] border border-[#e5ded6] bg-[#fafafa] text-[10px] text-[#777] outline-none">
-          <option>Type here</option>
+      <div style={{ marginTop: "14px" }}>
+        <label style={fieldLabel}>Inquiry Type</label>
+        <select
+          className="contact-field"
+          style={{ ...fieldInput, color: "#777", cursor: "pointer" }}
+          defaultValue=""
+        >
+          <option value="" disabled>Type here</option>
           <option>Custom Uniforms</option>
           <option>Bulk Apparel</option>
           <option>Sportswear</option>
         </select>
       </div>
 
-      <div className="mt-[14px]">
-        <label className="block text-[12px] text-[#9a9a9a] mb-[6px]">
-          Tell us about your project
-        </label>
-
+      <div style={{ marginTop: "14px" }}>
+        <label style={fieldLabel}>Tell us about your project</label>
         <textarea
-          className="w-full h-[112px] p-[12px] rounded-[6px] border border-[#e5ded6] bg-[#fafafa] text-[10px] outline-none resize-none"
+          className="contact-field contact-textarea"
+          style={{
+            ...fieldInput,
+            height: "112px",
+            padding: "12px",
+            resize: "none",
+          }}
           placeholder="Type here"
         />
       </div>
 
       <button
         type="submit"
-        className="mt-[16px] h-[42px] w-full px-[24px] rounded-[6px] bg-[#e1811f] text-white text-[10px] font-semibold"
+        className="contact-submit-btn"
+        style={{
+          marginTop: "16px",
+          height: "42px",
+          width: "100%",
+          padding: "0 24px",
+          borderRadius: "6px",
+          backgroundColor: "#e1811f",
+          color: "#fff",
+          fontSize: "12px",
+          fontWeight: 600,
+          border: "none",
+          cursor: "pointer",
+          fontFamily: "inherit",
+        }}
       >
         Send Inquiry
       </button>
+
+      <style>{`
+        .contact-field:focus {
+          border-color: #e1811f;
+          background-color: #fff;
+          box-shadow: 0 0 0 3px rgba(225, 129, 31, 0.12);
+        }
+        .contact-field::placeholder {
+          color: #bbb;
+        }
+        .contact-submit-btn:hover {
+          background-color: #d07018;
+          box-shadow: 0 4px 12px rgba(225, 129, 31, 0.35);
+        }
+        @media (max-width: 640px) {
+          .contact-form-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </form>
   );
 };

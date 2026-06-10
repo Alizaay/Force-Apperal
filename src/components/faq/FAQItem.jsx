@@ -5,77 +5,76 @@ const FAQItem = ({ item }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-[#9f9a94]">
+    <div style={{ borderBottom: "1px solid #9f9a94" }}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="
-          w-full
-
-          flex
-          items-center
-          justify-between
-
-          text-left
-
-          py-[22px]
-        "
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          textAlign: "left",
+          padding: "22px 0",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          fontFamily: "inherit",
+        }}
+        className="faq-item-btn"
       >
-        <h3
-          className="
-            text-[18px]
-            md:text-[16px]
-
-            font-black
-            uppercase
-
-            text-black
-
-            pr-[20px]
-          "
-        >
+        <h3 style={{
+          fontSize: "16px",
+          fontWeight: 900,
+          textTransform: "uppercase",
+          color: "#111",
+          paddingRight: "20px",
+          margin: 0,
+          lineHeight: 1.3,
+        }} className="faq-item-question">
           {item.question}
         </h3>
 
         <FiChevronDown
-          className={`
-            text-[16px]
-            text-black
-
-            flex-shrink-0
-
-            transition-transform
-            duration-300
-
-            ${open ? "rotate-180" : "rotate-0"}
-          `}
+          style={{
+            fontSize: "16px",
+            color: "#111",
+            flexShrink: 0,
+            transition: "transform 0.3s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
         />
       </button>
 
       <div
-        className={`
-          overflow-hidden
-
-          transition-all
-          duration-300
-
-          ${open ? "max-h-[250px] pb-[18px]" : "max-h-0"}
-        `}
+        style={{
+          overflow: "hidden",
+          transition: "max-height 0.3s ease, padding 0.3s ease",
+          maxHeight: open ? "600px" : "0",
+          paddingBottom: open ? "18px" : "0",
+        }}
       >
-        <p
-          className="
-            text-[14px]
-
-            leading-[2.65]
-
-            text-black
-
-            max-w-[900px]
-          "
-        >
+        <p style={{
+          fontSize: "14px",
+          lineHeight: 1.8,
+          color: "#111",
+          maxWidth: "900px",
+          margin: 0,
+        }}>
           {item.answer}
         </p>
       </div>
+
+      <style>{`
+        .faq-item-btn:hover .faq-item-question {
+          color: #e1811f;
+        }
+        @media (max-width: 768px) {
+          .faq-item-question {
+            font-size: 14px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

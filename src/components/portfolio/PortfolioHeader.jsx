@@ -1,61 +1,47 @@
 const PortfolioHeader = () => {
   return (
-    <div
-      className="
-        w-full
-
-        flex
-        flex-col
-        items-center
-
-        text-center
-
-        mb-[42px]
-      "
-    >
-      {/* LABEL */}
-      <p
-        className="
-          text-[#e1811f]
-
-          text-[ 12px]
-          uppercase
-
-          tracking-[2.5px]
-
-          font-medium
-
-          mb-[10px]
-        "
-      >
-        PORTFOLIO
+    <div style={{
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
+      textAlign: "left",
+      marginBottom: "42px",
+    }}>
+      <p style={{
+        color: "#e1811f",
+        fontSize: "12px",
+        textTransform: "uppercase",
+        letterSpacing: "2.5px",
+        fontWeight: 500,
+        marginBottom: "10px",
+        marginTop: 0,
+      }}>
+        Portfolio
       </p>
 
-      {/* TITLE */}
-      <h1
-        className="
-          max-w-[900px]
-
-          text-[34px]
-          md:text-[52px]
-
-          font-black
-          uppercase
-
-          leading-[0.95]
-
-          tracking-[-2px]
-
-          text-black
-        "
-      >
-        OUR APPAREL PROJECTS &
+      <h1 style={{
+        maxWidth: "900px",
+        fontSize: "52px",
+        fontWeight: 900,
+        textTransform: "uppercase",
+        lineHeight: 0.95,
+        letterSpacing: "-2px",
+        color: "#111",
+        margin: 0,
+      }} className="portfolio-hero-title">
+        Our Apparel Projects &amp;
         <br />
-
-        <span className="text-[#e1811f]">
-          CLIENT COLLECTIONS.
-        </span>
+        <span style={{ color: "#e1811f" }}>Client Collections.</span>
       </h1>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .portfolio-hero-title {
+            font-size: 34px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -2,95 +2,91 @@ import { Link } from "react-router-dom";
 
 const RelatedProducts = ({ products }) => {
   return (
-    <div className="mt-[58px]">
-      <h2
-        className="
-          text-[26px]
-          md:text-[30px]
-
-          font-black
-          uppercase
-
-          tracking-[-1px]
-
-          mb-[26px]
-
-          text-black
-        "
-      >
+    <div style={{ marginTop: "56px", paddingTop: "8px" }}>
+      <h2 style={{
+        fontSize: "28px",
+        fontWeight: 900,
+        textTransform: "uppercase",
+        letterSpacing: "-0.5px",
+        marginBottom: "24px",
+        marginTop: 0,
+        color: "#111",
+      }}>
         Related Products
       </h2>
 
-      <div className="max-w-[980px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px]">
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, 1fr)",
+        gap: "20px",
+      }} className="related-products-grid">
         {products.map((product) => (
           <Link
             key={product.id}
             to={`/product/${product.id}`}
-            className="
-              bg-[#f3efea]
-              rounded-[10px]
-              overflow-hidden
-              group
-
-              transition-all
-              duration-300
-
-              hover:shadow-md
-            "
+            className="related-product-card"
+            style={{
+              backgroundColor: "#f3efea",
+              borderRadius: "10px",
+              overflow: "hidden",
+              textDecoration: "none",
+              display: "block",
+              transition: "transform 0.25s ease, box-shadow 0.25s ease",
+            }}
           >
-            <div className="w-full h-[155px] overflow-hidden">
+            <div style={{ width: "100%", height: "150px", overflow: "hidden" }}>
               <img
                 src={product.image}
                 alt={product.title}
-                className="
-                  w-full
-                  h-full
-                  object-cover
-
-                  transition-all
-                  duration-300
-
-                  group-hover:scale-[1.04]
-                "
+                className="related-product-img"
+                style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.3s ease" }}
               />
             </div>
 
-            <div
-              className="
-                p-[16px]
-
-                flex
-                justify-between
-                items-center
-
-                gap-[10px]
-              "
-            >
-              <p
-                className="
-                  text-[12px]
-
-                  font-black
-                  uppercase
-
-                  text-black
-
-                  leading-[1.3]
-                "
-              >
+            <div style={{
+              padding: "14px 16px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "8px",
+            }}>
+              <p style={{
+                fontSize: "12px",
+                fontWeight: 900,
+                textTransform: "uppercase",
+                color: "#111",
+                lineHeight: 1.3,
+                margin: 0,
+              }}>
                 {product.title}
               </p>
-
-              <span className="text-[#e1811f] text-[20px] leading-none">
-                ›
-              </span>
+              <span style={{ color: "#e1811f", fontSize: "18px", lineHeight: 1, flexShrink: 0 }}>›</span>
             </div>
           </Link>
         ))}
-        </div>
       </div>
+
+      <style>{`
+        .related-product-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        }
+        .related-product-card:hover .related-product-img {
+          transform: scale(1.05);
+        }
+        @media (max-width: 1024px) {
+          .related-products-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .related-products-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
+
 export default RelatedProducts;

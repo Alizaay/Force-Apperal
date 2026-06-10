@@ -2,81 +2,73 @@ import { featuredBlog } from "../../data/blogData";
 
 const FeaturedBlog = () => {
   return (
-    <div className="w-full flex justify-center mb-[120px]">
+    <div style={{
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      marginBottom: "120px",
+    }} className="featured-blog-wrap">
       <div
-        className="
-          w-full
-          max-w-[1000px]
-
-          bg-white
-          rounded-[18px]
-
-          overflow-hidden
-
-          shadow-[0_10px_35px_rgba(0,0,0,0.08)]
-
-          grid
-          grid-cols-1
-          md:grid-cols-[48%_52%]
-        "
+        style={{
+          width: "100%",
+          maxWidth: "1000px",
+          backgroundColor: "#fff",
+          borderRadius: "18px",
+          overflow: "hidden",
+          boxShadow: "0 10px 35px rgba(0, 0, 0, 0.08)",
+          display: "grid",
+          gridTemplateColumns: "48% 52%",
+          border: "1px solid #f0eae2",
+        }}
+        className="featured-blog-card"
       >
-        {/* IMAGE */}
-        <div className="h-[350px]">
+        <div className="featured-blog-image" style={{ height: "350px", overflow: "hidden", backgroundColor: "#ececec" }}>
           <img
             src={featuredBlog.image}
             alt={featuredBlog.title}
-            className="w-full h-full object-cover"
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
         </div>
 
-        {/* CONTENT */}
-        <div
-          className="
-            flex
-            flex-col
-            justify-center
-
-            px-[42px]
-            lg:px-[58px]
-
-            py-[50px]
-          "
-        >
-          <p className="text-[#e1811f] text-[12px] uppercase tracking-[4px] mb-[24px]">
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "50px 58px",
+        }} className="featured-blog-content">
+          <p style={{
+            color: "#e1811f",
+            fontSize: "12px",
+            textTransform: "uppercase",
+            letterSpacing: "4px",
+            marginBottom: "24px",
+            marginTop: 0,
+          }}>
             {featuredBlog.category}
           </p>
 
-          <h2
-            className="
-              text-[24px]
-              lg:text-[34px]
-
-              font-black
-              uppercase
-
-              leading-[1.12]
-              tracking-[-1px]
-
-              text-black
-
-              max-w-[560px]
-              mb-[32px]
-            "
-          >
+          <h2 style={{
+            fontSize: "34px",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            lineHeight: 1.12,
+            letterSpacing: "-1px",
+            color: "#111",
+            maxWidth: "560px",
+            marginBottom: "32px",
+            marginTop: 0,
+          }} className="featured-blog-title">
             {featuredBlog.title}
           </h2>
 
-          <p
-            className="
-              text-[16px]
-              leading-[1.3]
-              text-black
-
-              max-w-[600px]
-
-              mb-[36px]
-            "
-          >
+          <p style={{
+            fontSize: "16px",
+            lineHeight: 1.3,
+            color: "#111",
+            maxWidth: "600px",
+            marginBottom: "36px",
+            marginTop: 0,
+          }}>
             {featuredBlog.description}
           </p>
 
@@ -84,23 +76,52 @@ const FeaturedBlog = () => {
             href="https://www.google.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              w-fit
-
-              text-[#e1811f]
-
-              text-[12px]
-              uppercase
-
-              tracking-[5px]
-
-              font-medium
-            "
+            className="featured-blog-link"
+            style={{
+              width: "fit-content",
+              color: "#e1811f",
+              fontSize: "12px",
+              textTransform: "uppercase",
+              letterSpacing: "5px",
+              fontWeight: 500,
+              textDecoration: "none",
+            }}
           >
             Read Article&nbsp;&nbsp;↗
           </a>
         </div>
       </div>
+
+      <style>{`
+        .featured-blog-link:hover {
+          opacity: 0.75;
+        }
+        @media (max-width: 768px) {
+          .featured-blog-wrap {
+            margin-bottom: 60px !important;
+          }
+          .featured-blog-card {
+            grid-template-columns: 1fr !important;
+          }
+          .featured-blog-content {
+            padding: 36px 28px !important;
+          }
+          .featured-blog-title {
+            font-size: 24px !important;
+          }
+          .featured-blog-image {
+            height: 240px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .featured-blog-content {
+            padding: 28px 20px !important;
+          }
+          .featured-blog-image {
+            height: 200px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -2,16 +2,25 @@ export const contactInfo = [
   {
     title: "Email",
     value: "info@forgeapparel.com",
+    href: "mailto:info@forgeapparel.com",
+    type: "email",
   },
   {
     title: "Phone",
     value: "+92 300 1234567",
+    href: "tel:+923001234567",
+    type: "phone",
   },
   {
     title: "Address",
     value: "Industrial Hub 04, Sector 12, San Francisco",
+    href: "https://maps.google.com/?q=Industrial+Hub+04,+Sector+12,+San+Francisco",
+    type: "address",
   },
 ];
+
+export const mapEmbedUrl =
+  "https://maps.google.com/maps?q=Industrial+Hub+04,+Sector+12,+San+Francisco&hl=en&z=14&output=embed";
 
 export const contactFaqs = [
   {

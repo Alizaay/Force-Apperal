@@ -2,25 +2,32 @@ import PortfolioCard from "./PortfolioCard";
 
 const PortfolioGrid = ({ projects }) => {
   return (
-    <div className="w-full flex justify-center">
-      <div
-        className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-3
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "10px",
+        width: "100%",
+        lineHeight: 1.15,
+      }}
+      className="portfolio-grid"
+    >
+      {projects.map((project) => (
+        <PortfolioCard key={project.id} project={project} />
+      ))}
 
-          gap-[10px]
-
-          max-w-[1200px]
-          w-full
-          leading-[1.15]
-        "
-      >
-        {projects.map((project) => (
-          <PortfolioCard key={project.id} project={project} />
-        ))}
-      </div>
+      <style>{`
+        @media (max-width: 1024px) {
+          .portfolio-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .portfolio-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

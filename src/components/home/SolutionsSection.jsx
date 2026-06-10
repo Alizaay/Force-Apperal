@@ -1,160 +1,94 @@
-import Container from "../shared/Container";
-
-// images
 import mainSolution from "../../assets/images/accessories.jpg";
 import workWear from "../../assets/images/workwear.jpg";
 import heroImage from "../../assets/images/heroImage.png";
 import formalWear from "../../assets/images/FormalWear.jpg";
 
+const bullets = [
+  "With a strong focus on fabric quality,",
+  "precision tailoring, and custom production,",
+  "we help brands and teams stand out with confidence.",
+];
+
 const SolutionsSection = () => {
   return (
-    <section className="bg-[#f3efea] w-full overflow-hidden">
-      <div>
-        <Container>
-          <div className="max-w-[2000px] mx-auto">
+    <section className="solutions-section" style={{ backgroundColor: "#f3efea", width: "100%", padding: "70px 0" }}>
+      <div className="solutions-container" style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 40px", textAlign: "center" }}>
+        <h2 className="solutions-heading" style={{ fontSize: "42px", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-1px", color: "#111", lineHeight: 1.1, marginBottom: "24px" }}>
+          We Deliver Complete{" "}
+          <span style={{ color: "#e1811f" }}>Apparel Solutions</span>
+        </h2>
+        <div className="solutions-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#333", marginBottom: "24px", textAlign: "left" }}>
+              We deliver complete apparel solutions across sportswear, formal clothing, and industrial uniforms.
+            </p>
 
-            {/* HEADING */}
-            <h2
-              className="
-                text-center
-                text-[30px]
-                lg:text-[42px]
-                font-black
-                uppercase
-                tracking-[-1px]
-                leading-[1.1]
-                text-black
-                mb-[64px]
-              "
-            >
-              We Deliver Complete{" "}
-              <span className="text-[#e1811f]">
-                Apparel Solutions
-              </span>
-            </h2>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {bullets.map((point, idx) => (
+                <li key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "12px", marginBottom: "12px" }}>
+                  <span style={{
+                    width: "7px", height: "7px", backgroundColor: "#e1811f",
+                    borderRadius: "2px", flexShrink: 0, marginTop: "7px",
+                  }} />
+                  <span style={{ fontSize: "16px", lineHeight: 1.5, color: "#333", textAlign: "left" }}>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div
-              className="
-                  grid
-                  grid-cols-1
-                  lg:grid-cols-[330px_480px]
-                  justify-center
-                  items-center
-                  gap-[90px]
-                "
-            >
-
-              {/* LEFT TEXT */}
-              <div className="mx-auto lg:mx-0 text-center lg:text-left">
-                <p
-                  className="
-                    text-[19px]
-                    leading-[1.25]
-                    text-black
-                    mb-[26px]
-                    max-w-[520px]
-                    mx-auto lg:mx-0
-                  "
-                >
-                  We deliver complete apparel
-                  solutions across sportswear,
-                  formal clothing, and industrial
-                  uniforms.
-                </p>
-
-                <ul
-                  className="
-                    list-disc
-                    pl-[22px]
-                    text-[18px]
-                    leading-[1.25]
-                    text-black
-                    space-y-[4px]
-                    max-w-[320px]
-                  "
-                >
-                  <li>
-                    With a strong focus on fabric
-                    quality,
-                  </li>
-                  <li>
-                    precision tailoring, and
-                    custom production,
-                  </li>
-                  <li>
-                    we help brands and teams
-                    stand out with confidence.
-                  </li>
-                </ul>
+          <div className="solutions-collage" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "1fr 1fr", gap: "10px", height: "340px" }}>
+            <div style={{ gridRow: "1 / 3", backgroundColor: "#fff", borderRadius: "6px", padding: "8px", overflow: "hidden" }}>
+              <img src={mainSolution} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "4px" }} />
+            </div>
+            <div style={{ backgroundColor: "#fff", borderRadius: "6px", padding: "8px", overflow: "hidden" }}>
+              <img src={workWear} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "4px" }} />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+              <div style={{ backgroundColor: "#fff", borderRadius: "6px", padding: "8px", overflow: "hidden" }}>
+                <img src={heroImage} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "4px" }} />
               </div>
-
-              {/* RIGHT IMAGES */}
-              <div
-                className="
-                  grid
-                  grid-cols-[1.1fr_1fr]
-                  gap-[12px]
-                  h-auto
-                  lg:h-[340px]
-                "
-              >
-                {/* BIG IMAGE */}
-                <div
-                  className="
-                      row-span-2
-                      rounded-[6px]
-                      overflow-hidden
-                      bg-white
-                      p-[8px]
-                    "
-                >
-                  <img
-                    src={mainSolution}
-                    alt="Apparel solution"
-                    className="w-full h-full object-cover rounded-[4px]"
-                  />
-                </div>
-
-                {/* TOP RIGHT */}
-                <div
-                  className="
-                      rounded-[6px]
-                      overflow-hidden
-                      bg-white
-                      p-[8px]
-                    "
-                >
-                  <img
-                    src={workWear}
-                    alt="Work wear"
-                    className="w-full h-full object-cover rounded-[4px]"
-                  />
-                </div>
-
-                {/* BOTTOM RIGHT TWO */}
-                <div className="grid grid-cols-2 gap-[8px]">
-                  <div className="rounded-[6px] overflow-hidden bg-white p-[8px]">
-                    <img
-                      src={heroImage}
-                      alt="Sportswear"
-                      className="w-full h-full object-cover rounded-[4px]"
-                    />
-                  </div>
-
-                  <div className="rounded-[6px] overflow-hidden bg-white p-[8px]">
-                    <img
-                      src={formalWear}
-                      alt="Formal wear"
-                      className="w-full h-full object-cover rounded-[4px]"
-                    />
-                  </div>
-                </div>
+              <div style={{ backgroundColor: "#fff", borderRadius: "6px", padding: "8px", overflow: "hidden" }}>
+                <img src={formalWear} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "4px" }} />
               </div>
-
             </div>
           </div>
-        </Container>
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .solutions-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          .solutions-section {
+            padding-top: 48px !important;
+            padding-bottom: 48px !important;
+          }
+          .solutions-heading {
+            font-size: 28px !important;
+          }
+          .solutions-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .solutions-collage {
+            height: 280px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .solutions-container {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .solutions-heading {
+            font-size: 24px !important;
+          }
+          .solutions-collage {
+            height: 220px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

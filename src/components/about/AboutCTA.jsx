@@ -2,78 +2,56 @@ import { Link } from "react-router-dom";
 
 const AboutCTA = () => {
   return (
-    <section className="bg-white w-full overflow-hidden">
-      <div className="w-full flex justify-center px-6 py-[60px]">
+    <section style={{ backgroundColor: "#fff", width: "100%", overflow: "hidden" }}>
+      <div style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        padding: "60px 24px",
+      }}>
         <div
-          className="
-            w-full
-            max-w-[950px]
-
-            bg-[#e1811f]
-
-            rounded-[12px]
-
-            min-h-[250px]
-
-            shadow-[0_8px_24px_rgba(0,0,0,0.08)]
-
-            grid
-            grid-cols-1
-            md:grid-cols-[1fr_240px]
-
-            items-center
-          "
+          style={{
+            width: "100%",
+            maxWidth: "950px",
+            backgroundColor: "#e1811f",
+            borderRadius: "12px",
+            minHeight: "250px",
+            boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
+            display: "grid",
+            gridTemplateColumns: "1fr 240px",
+            alignItems: "center",
+          }}
+          className="about-cta-card"
         >
-          {/* LEFT CONTENT */}
-          <div
-            className="
-              flex
-              flex-col
-              justify-center
-
-              h-full
-
-              pl-[60px]
-              lg:pl-[80px]
-
-              pr-[30px]
-              py-[50px]
-            "
-          >
-            <p
-              className="
-                text-white
-
-                text-[10px]
-                uppercase
-
-                tracking-[4px]
-
-                font-medium
-
-                mb-[22px]
-              "
-            >
-              LET'S BUILD SOMETHING
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            height: "100%",
+            padding: "50px 30px 50px 80px",
+          }} className="about-cta-content">
+            <p style={{
+              color: "#fff",
+              fontSize: "10px",
+              textTransform: "uppercase",
+              letterSpacing: "4px",
+              fontWeight: 500,
+              marginBottom: "22px",
+              marginTop: 0,
+            }}>
+              Let&apos;s Build Something
             </p>
 
-            <h2
-              className="
-                text-white
-
-                text-[34px]
-                md:text-[42px]
-
-                font-black
-                uppercase
-
-                leading-[1.05]
-
-                tracking-[-1px]
-
-                max-w-[560px]
-              "
-            >
+            <h2 style={{
+              color: "#fff",
+              fontSize: "42px",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              lineHeight: 1.05,
+              letterSpacing: "-1px",
+              maxWidth: "560px",
+              margin: 0,
+            }} className="about-cta-title">
               Need Custom
               <br />
               Uniforms Or Bulk
@@ -82,78 +60,85 @@ const AboutCTA = () => {
             </h2>
           </div>
 
-          {/* RIGHT BUTTONS */}
-          <div
-            className="
-              flex
-              flex-col
-              justify-center
-              items-center
-
-              gap-[14px]
-
-              py-[50px]
-              pr-[40px]
-            "
-          >
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "14px",
+            padding: "50px 40px 50px 0",
+          }} className="about-cta-actions">
             <Link
               to="/contact"
-              className="
-                w-[170px]
-                h-[52px]
-
-                inline-flex
-                items-center
-                justify-center
-
-                rounded-[8px]
-
-                bg-white
-
-                text-black
-                text-[14px]
-                font-medium
-
-                transition-all
-                duration-300
-
-                hover:scale-[1.02]
-              "
+              className="about-cta-btn-primary"
+              style={{
+                width: "170px",
+                height: "52px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "8px",
+                backgroundColor: "#fff",
+                color: "#111",
+                fontSize: "14px",
+                fontWeight: 500,
+                textDecoration: "none",
+                transition: "transform 0.2s ease",
+              }}
             >
               Get a Quote ↗
             </Link>
 
             <Link
               to="/contact"
-              className="
-                w-[170px]
-                h-[52px]
-
-                inline-flex
-                items-center
-                justify-center
-
-                rounded-[8px]
-
-                border
-                border-black
-
-                text-black
-                text-[14px]
-                font-medium
-
-                transition-all
-                duration-300
-
-                hover:bg-black
-                hover:text-white
-              "
+              className="about-cta-btn-secondary"
+              style={{
+                width: "170px",
+                height: "52px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "8px",
+                border: "1.5px solid #111",
+                color: "#111",
+                backgroundColor: "transparent",
+                fontSize: "14px",
+                fontWeight: 500,
+                textDecoration: "none",
+                transition: "background-color 0.2s ease, color 0.2s ease",
+              }}
             >
               Start your order
             </Link>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .about-cta-btn-primary:hover {
+          transform: scale(1.02);
+        }
+        .about-cta-btn-secondary:hover {
+          background-color: #111 !important;
+          color: #fff !important;
+        }
+        @media (max-width: 768px) {
+          .about-cta-card {
+            grid-template-columns: 1fr !important;
+          }
+          .about-cta-content {
+            padding: 40px 28px 20px !important;
+            text-align: center;
+            align-items: center;
+          }
+          .about-cta-actions {
+            padding: 0 28px 40px !important;
+          }
+          .about-cta-title {
+            font-size: 34px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

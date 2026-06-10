@@ -9,16 +9,9 @@ import Blog from "../pages/Blog";
 import FAQ from "../pages/FAQ";
 import Contact from "../pages/Contact";
 
-
-
-
-
-
-
 const AppRoutes = () => {
   return (
     <Routes>
-
       <Route path="/" element={<Home />} />
 
       <Route path="/about" element={<About />} />
@@ -27,19 +20,14 @@ const AppRoutes = () => {
 
       <Route path="/blogs" element={<Blog />} />
 
-     <Route path="/faq" element={<FAQ />} />
+      <Route path="/faq" element={<FAQ />} />
 
-<Route path="/contact" element={<Contact />} />
+      <Route path="/contact" element={<Contact />} />
 
-     <Route
-  path="/category/:slug"
-  element={<CategoryPage />}
-/>
-<Route
-  path="/product/:id"
-  element={<ProductDetails />}
-/>
-</Routes>
+      <Route path="/category/:slug" element={<CategoryPage />} />
+      
+      <Route path="/product/:id" element={<ProductDetails />} />
+    </Routes>
   );
 };
 

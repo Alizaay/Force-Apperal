@@ -1,69 +1,79 @@
+const sizeHeights = {
+  large: "350px",
+  small: "230px",
+  medium: "280px",
+};
+
 const PortfolioCard = ({ project }) => {
-  const heightClass =
-    project.size === "large"
-      ? "h-[350px]"
-      : project.size === "small"
-      ? "h-[230px]"
-      : "h-[280px]";
+  const height = sizeHeights[project.size] || sizeHeights.medium;
 
   return (
-    <div
-      className={`
-        relative
-        ${heightClass}
-
-        rounded-[10px]
-        overflow-hidden
-
-        bg-black
-
-        group
-      `}
+    <article
+      className="portfolio-card"
+      style={{
+        position: "relative",
+        height,
+        borderRadius: "10px",
+        overflow: "hidden",
+        backgroundColor: "#111",
+        cursor: "pointer",
+      }}
     >
       <img
         src={project.image}
         alt={project.title}
-        className="
-          w-full
-          h-full
-          object-cover
-
-          transition-all
-          duration-500
-
-          group-hover:scale-[1.05]
-        "
+        className="portfolio-card-image"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+          transition: "transform 0.5s ease",
+        }}
       />
 
-      <div className="absolute inset-0 bg-black/25" />
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.25)",
+      }} />
 
-      <div className="absolute left-[10px] bottom-[10px]">
-        <p
-          className="
-            text-[#e1811f]
-            text-[14px]
-            uppercase
-            tracking-[0.8px]
-            font-bold
-            mb-[3px]
-          "
-        >
+      <div style={{
+        position: "absolute",
+        left: "10px",
+        bottom: "10px",
+        zIndex: 1,
+      }}>
+        <p style={{
+          color: "#e1811f",
+          fontSize: "14px",
+          textTransform: "uppercase",
+          letterSpacing: "0.8px",
+          fontWeight: 700,
+          marginBottom: "3px",
+          marginTop: 0,
+        }}>
           {project.category}
         </p>
 
-        <h3
-          className="
-            text-white
-            text-[18px]
-            font-black
-            uppercase
-            leading-[1.15]
-          "
-        >
+        <h3 style={{
+          color: "#fff",
+          fontSize: "18px",
+          fontWeight: 900,
+          textTransform: "uppercase",
+          lineHeight: 1.15,
+          margin: 0,
+        }}>
           {project.title}
         </h3>
       </div>
-    </div>
+
+      <style>{`
+        .portfolio-card:hover .portfolio-card-image {
+          transform: scale(1.05);
+        }
+      `}</style>
+    </article>
   );
 };
 

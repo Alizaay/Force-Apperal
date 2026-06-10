@@ -18,39 +18,48 @@ const Portfolio = () => {
   const filteredProjects =
     activeTab === "All"
       ? portfolioProjects
-      : portfolioProjects.filter(
-          (item) => item.category === activeTab
-        );
+      : portfolioProjects.filter((item) => item.category === activeTab);
 
   return (
     <MainLayout>
-      <section className="bg-[#f7f7f5] w-full overflow-hidden">
-       <div
-  className="
-    max-w-[1400px]
-    mx-auto
+      <section style={{ backgroundColor: "#f7f7f5", width: "100%", overflow: "hidden" }}>
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "60px 24px 80px",
+          }}
+          className="portfolio-container"
+        >
+          <div style={{ maxWidth: "1200px", width: "100%" }} className="portfolio-content">
+            <PortfolioHeader />
 
-    px-6
-    lg:px-10
+            <PortfolioTabs
+              tabs={portfolioTabs}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
 
-    py-[60px]
-  "
->
-          <PortfolioHeader />
+            <PortfolioGrid projects={filteredProjects} />
 
-          <PortfolioTabs
-            tabs={portfolioTabs}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-
-          <PortfolioGrid
-            projects={filteredProjects}
-          />
-
-          <TrustedBy />
+            <TrustedBy />
+          </div>
         </div>
       </section>
+
+      <style>{`
+        @media (min-width: 1024px) {
+          .portfolio-container {
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .portfolio-container {
+            padding: 40px 16px 60px !important;
+          }
+        }
+      `}</style>
     </MainLayout>
   );
 };

@@ -28,60 +28,8 @@ ul {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
   display: block;
-}
-
-/* Default vertical spacing for page sections */
-section {
-  padding-block: var(--section-vertical);
-}
-
-/* Apply a small inline gap for flex/grid containers inside sections to reduce congestion */
-section :is([class*="flex"], [class*="grid"]) {
-  gap: var(--inline-space);
-}
-
-/* Ensure consistent vertical rhythm inside sections: add gap between direct children */
-section > * + * {
-  margin-top: var(--section-element-gap);
-}
-
-/* Typographic spacing */
-h1, h2, h3, h4, h5 {
-  margin: 0 0 0.6rem 0;
-  line-height: 1.05;
-}
-
-p {
-  margin: 0 0 0.95rem 0;
-  color: var(--gray);
-}
-
-/* Buttons and small UI elements: ensure inline gaps */
-.inline-gap > * + * {
-  margin-left: var(--inline-space);
-}
-
-/* Apply consistent vertical spacing between direct children for primary layout containers */
-main > * + *,
-section > * + *,
-article > * + *,
-header > * + *,
-footer > * + *,
-.container > * + *,
-.card > * + *,
-.content > * + * {
-  margin-top: var(--section-element-gap);
-}
-
-/* Ensure flex rows use inline-gap utility where desired (avoid forcing on all .flex) */
-.inline-gap-row {
-  display: flex;
-  align-items: center;
-}
-.inline-gap-row > * + * {
-  margin-left: var(--inline-space);
 }
 
 button {
@@ -97,4 +45,26 @@ select {
   outline: none;
   border: none;
   font-family: inherit;
+}
+
+/* Shared responsive page container */
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

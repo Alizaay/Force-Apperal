@@ -2,76 +2,66 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div
-      className="
-        bg-[#f5f3ef]
-        rounded-[8px]
-
-        p-[12px]
-
-        flex
-        items-center
-        justify-between
-
-        gap-[12px]
-
-        min-h-[125px]
-
-        border
-        border-[#efe7dd]
-      "
-    >
-      {/* LEFT CONTENT */}
-      <div className="flex-1 min-w-0">
-        <Link to={`/product/${product.id}`} className="block">
-          <h3
-            className="
-              text-[16px]
-              font-black
-              uppercase
-              text-black
-              leading-[1.25]
-              mb-[7px]
-            "
-          >
+    <div className="product-card">
+      {/* LEFT — Text + Button */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <Link to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
+          <h3 style={{
+            fontSize: "15px",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            color: "#111",
+            lineHeight: 1.25,
+            marginBottom: "6px",
+            marginTop: 0,
+          }}>
             {product.title}
           </h3>
-
-          <p className="text-[12px] text-[#777] mb-[3px]">
-            {product.moq}
-          </p>
-
-          <p className="text-[12px] text-[#777] mb-[12px]">
-            {product.desc}
-          </p>
+          <p style={{ fontSize: "12px", color: "#777", margin: "0 0 3px 0" }}>{product.moq}</p>
+          <p style={{ fontSize: "12px", color: "#777", margin: "0 0 14px 0" }}>{product.desc}</p>
         </Link>
 
-        <Link to={`/product/${product.id}`} className="inline-flex items-center justify-center bg-[#e1811f] rounded-[4px] px-[18px] py-[8px] text-[14px] text-white transition-all duration-300 hover:bg-[#d07018]">
+        <Link
+          to={`/product/${product.id}`}
+          className="product-card-btn"
+        >
           Quick Inquiry
         </Link>
       </div>
 
-      {/* IMAGE */}
+      {/* RIGHT — Image */}
       <Link
         to={`/product/${product.id}`}
-        className="
-          w-[78px]
-          h-[102px]
-
-          rounded-[6px]
-          overflow-hidden
-
-          shrink-0
-        "
+        className="product-card-image-wrap"
+        style={{
+          width: "110px",
+          height: "140px",
+          borderRadius: "6px",
+          overflow: "hidden",
+          flexShrink: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#fff",
+          padding: "4px",
+        }}
       >
         <img
           src={product.image}
           alt={product.title}
-          className="
-            w-full
-            h-full
-            object-cover
-          "
+          width={236}
+          height={302}
+          loading="lazy"
+          decoding="async"
+          className="product-card-image"
+          style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
+            width: "auto",
+            height: "auto",
+            objectFit: "contain",
+            objectPosition: "center",
+          }}
         />
       </Link>
     </div>

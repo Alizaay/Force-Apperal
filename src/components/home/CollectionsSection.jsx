@@ -1,156 +1,112 @@
-import Container from "../../components/shared/Container";
-
-// images
 import workWear from "../../assets/images/workwear.jpg";
 import formalWear from "../../assets/images/FormalWear.jpg";
 import accessories from "../../assets/images/accessories.jpg";
 import healthcare from "../../assets/images/HealthCare.png";
 
-// icons
 import workWearIcon from "../../assets/icons/clothicon.svg";
 import formalWearIcon from "../../assets/icons/clothicon.svg";
 import accessoriesIcon from "../../assets/icons/clothicon.svg";
 import healthcareIcon from "../../assets/icons/healthicon.svg";
 
 const collections = [
-  {
-    title: "Work Wear",
-    image: workWear,
-    icon: workWearIcon,
-  },
-  {
-    title: "Formal Wear",
-    image: formalWear,
-    icon: formalWearIcon,
-  },
-  {
-    title: "Accessories",
-    image: accessories,
-    icon: accessoriesIcon,
-  },
-  {
-    title: "Healthcare",
-    image: healthcare,
-    icon: healthcareIcon,
-  },
+  { title: "Work Wear", desc: "Durable hi-vis and industrial uniforms built for safety and performance.", image: workWear, icon: workWearIcon },
+  { title: "Formal Wear", desc: "Professional blazers, shirts, and corporate attire tailored to your brand.", image: formalWear, icon: formalWearIcon },
+  { title: "Accessories", desc: "Complete your look with ties, bags, and premium branded accessories.", image: accessories, icon: accessoriesIcon },
+  { title: "Healthcare", desc: "Comfortable, hygienic scrubs and medical uniforms for healthcare teams.", image: healthcare, icon: healthcareIcon },
 ];
 
 const CollectionSection = () => {
   return (
-    <section className="bg-white w-full overflow-hidden">
-      <div>
-        <Container>
+    <section className="collections-section" style={{ backgroundColor: "#fff", width: "100%", padding: "70px 0" }}>
+      <div className="collections-container" style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <p style={{ color: "#e1811f", fontSize: "10px", textTransform: "uppercase", letterSpacing: "2.5px", fontWeight: 500, marginBottom: "10px" }}>
+            Categories Section &amp; Testimonial...
+          </p>
+          <h2 className="collections-heading" style={{ fontSize: "40px", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-1px", color: "#111", lineHeight: 1 }}>
+            Our Diverse Collection
+          </h2>
+        </div>
 
-          {/* TOP CONTENT */}
-          <div className="text-center mb-[48px]">
-            <p className="text-[#e1811f] text-[8px] uppercase tracking-[2.4px] mb-[10px]">
-              Categories Section A Testimonial...
-            </p>
-
-            <h2 className="text-[34px] font-black uppercase tracking-[-1.2px] leading-none text-black">
-              Our Diverse Collection
-            </h2>
-          </div>
-
-          {/* CENTER GRID */}
-          <div className="flex justify-center w-full">
+        <div className="collections-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px", maxWidth: "980px", margin: "0 auto" }}>
+          {collections.map((item, idx) => (
             <div
-              className="
-                w-full
-                max-w-[980px]
-                mx-auto
-
-                grid
-                grid-cols-1
-                md:grid-cols-2
-
-                gap-x-[36px]
-                gap-y-[32px]
-              "
+              key={idx}
+              className="collection-card"
+              style={{
+                backgroundColor: "#f4f4f4",
+                borderRadius: "8px",
+                padding: "28px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "20px",
+                minHeight: "200px",
+              }}
             >
-              {collections.map((item, index) => (
-                <div
-                  key={index}
-                  className="
-                    bg-[#f4f4f4]
-                    rounded-[8px]
-
-                    w-full
-                    sm:max-w-[474px]
-
-                    h-auto
-                    sm:h-[204px]
-
-                    mx-auto
-
-                    px-[30px]
-                    py-[26px]
-
-                    flex
-                    flex-col
-                    sm:flex-row
-                    items-start
-                    sm:items-center
-
-                    gap-[20px]
-                  "
-                >
-                  {/* LEFT */}
-                  <div className="w-full sm:w-[150px]">
-                    <div
-                      className="w-[34px] h-[34px] rounded-[6px] bg-[#faead9] flex items-center justify-center mb-[15px]"
-                    >
-                      <img
-                        src={item.icon}
-                        alt={`${item.title} icon`}
-                        className="w-[50px] h-[50px] object-contain"
-                      />
-                    </div>
-
-                    <h3 className="text-[24px] font-black uppercase text-black mb-[12px]">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-[16px] leading-[1.55] text-[#8c8c8c]">
-                      Global logistics network ensuring your team is geared up
-                      on time.
-                    </p>
-                  </div>
-
-                  {/* IMAGE */}
-                  <div
-                    className="
-                      w-full
-                      sm:w-[120px]
-                      h-auto
-                      sm:h-[120px]
-
-                      bg-white
-
-                      rounded-[8px]
-
-                      p-[6px]
-
-                      flex
-                      items-center
-                      justify-center
-
-                      shrink-0
-                    "
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover rounded-[6px]"
-                    />
-                  </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{
+                  width: "36px", height: "36px", backgroundColor: "#faead9",
+                  borderRadius: "6px", display: "flex", alignItems: "center",
+                  justifyContent: "center", marginBottom: "14px",
+                }}>
+                  <img src={item.icon} alt="" style={{ width: "18px", height: "18px" }} />
                 </div>
-              ))}
-            </div>
-          </div>
+                <h3 style={{ fontSize: "20px", fontWeight: 900, textTransform: "uppercase", color: "#111", marginBottom: "10px", lineHeight: 1.2 }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: "13px", lineHeight: 1.65, color: "#8c8c8c" }}>
+                  {item.desc}
+                </p>
+              </div>
 
-        </Container>
+              <div className="collection-card-image" style={{
+                width: "130px", height: "130px", flexShrink: 0,
+                backgroundColor: "#fff", borderRadius: "8px",
+                overflow: "hidden",
+              }}>
+                <img src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .collections-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          .collections-section {
+            padding-top: 48px !important;
+            padding-bottom: 48px !important;
+          }
+          .collections-heading {
+            font-size: 28px !important;
+          }
+          .collections-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .collections-container {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .collection-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 20px !important;
+            min-height: auto !important;
+          }
+          .collection-card-image {
+            width: 100% !important;
+            height: 180px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

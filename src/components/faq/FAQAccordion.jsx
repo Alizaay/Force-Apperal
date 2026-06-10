@@ -3,15 +3,12 @@ import { faqData } from "../../data/faqData";
 
 const FAQAccordion = () => {
   return (
-    <div className="w-full">
-      <div
-        className="
-          w-full
-          max-w-[900px]
-
-          mx-auto
-        "
-      >
+    <div style={{ width: "100%" }}>
+      <div style={{
+        width: "100%",
+        maxWidth: "900px",
+        margin: "0 auto",
+      }}>
         {faqData.map((item) => (
           <FAQItem key={item.id} item={item} />
         ))}
